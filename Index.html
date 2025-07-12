@@ -1,74 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astronauta em Realidade Aumentada</title>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Visualizador AR - Galinha</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        p {
-            color: #555;
-            max-width: 600px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .ar-button {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .ar-button:hover {
-            background-color: #45a049;
-        }
-        .note {
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #777;
-        }
+      body { margin: 0; overflow: hidden; }
+      model-viewer { width: 100vw; height: 100vh; }
     </style>
-</head>
-<body>
-    <h1>Visualize seu Astronauta em Realidade Aumentada!</h1>
-    <p>
-        Clique no botão abaixo para ver um modelo 3D de **astronauta** no seu ambiente real através da Realidade Aumentada. 
-        Este recurso funciona melhor em dispositivos Android compatíveis com ARCore e com o Google Play Services para RA instalado.
-    </p>
-
-    <a 
-        class="ar-button"
-        href="intent://arvr.google.com/scene-viewer/1.0?file=https://cozy-truffle-28f468.netlify.app/Astronaut.glb&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar/scene-viewer-web;end;"
+  </head>
+  <body>
+    <model-viewer
+      src="galinha.glb"
+      alt="Minha galinha em AR"
+      ar
+      ar-modes="webxr scene-viewer"
+      ar-placement="floor"
+      camera-controls
+      auto-rotate
+      shadow-intensity="1"
+      environment-image="neutral"
+      exposure="1"
     >
-        Ver Astronauta em RA Agora!
-    </a>
-
-    <p class="note">
-        **Observação:** O modelo de astronauta usado neste exemplo é do repositório de assets compartilhados do projeto Model Viewer do Google.
-        Se você tiver um **modelo GLB de astronauta próprio**, você precisará hospedá-lo online e substituir o URL acima pelo URL do seu próprio modelo.
-    </p>
-
-</body>
+      <button slot="ar-button" id="ar-button">👀 Ver em AR</button>
+    </model-viewer>
+  </body>
 </html>
